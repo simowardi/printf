@@ -27,7 +27,7 @@ int _printf(const char *format, ...)
 		{
 			format++;
 			if (*format == '\0')
-				break;
+				retrun (-1);
 
 			else if (*format == '%')
 				printed += print_normal_percent(format);
