@@ -10,14 +10,6 @@ int char_handler(va_list args_list)
 {
 	char cc = va_arg(args_list, int);
 
-	/* Check for null character */
-	if (cc == '\0')
-	{
-		/* Handle special case for null character */
-		write(1, "\\0", 2);
-		return (2);  /*Return 2 printed two characters: '\', '0' */
-	}
-
 	write(1, &cc, 1);
 	return (1);
 }
