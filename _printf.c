@@ -21,7 +21,13 @@ int _printf(const char *format, ...)
 		if (*format != '%')
 		{
 			printed += print_normal_char(format);
-		} else
+		}
+		else if (*format == '\0')
+		{
+			write(1, '(null)', 6);
+			return (6);
+		}
+		else
 		{
 			format++;
 			if (*format == '\0')
