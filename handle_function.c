@@ -34,14 +34,20 @@ int str_handler(va_list args_list)
 	int len = 0;
 
 	if (ss == NULL)
-		ss = "(null)";
+	{
+		write(1, "(null)", 6);
+		return (6);
+	}
 
+	else
+	{
 	while (ss[len])
 	{
 		len++;
 	}
 	write(1, ss, len);
 	return (len);
+	}
 }
 
 
