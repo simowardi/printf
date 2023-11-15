@@ -12,8 +12,8 @@ int char_handler(va_list args_list)
 
 	if (cc == '\0')
 	{
-		write(1, "(null)", 6);
-		return (6);
+		write(1, "\0", 2);
+		return (2);
 	}
 
 	write(1, &cc, 1);
