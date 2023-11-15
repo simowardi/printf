@@ -75,25 +75,22 @@ int int_handler(va_list args_list)
 	}
 	else
 	{
-		char buffer[12];  /*Assuming a 32-bit integer*/
-		int i = 0;
+	char buffer[12];  /*Assuming a 32-bit integer*/
+	int i = num_digits - 1;
 
-		while (temp != 0)
-        {
-            buffer[i] = temp % 10 + '0';
-            temp /= 10;
-            i++;
-        }
+	if (dd < 0)
+		dd = -dd;
 
-        while (i > 0)
-        {
-            write(1, &buffer[--i], 1);
-            num_digits++;
-        }
-    }
-    return num_digits;
+	while (dd != 0)
+	{
+		buffer[i] = dd % 10 + '0';
+		dd /= 10;
+		i--;
+	}
+	write(1, buffer, num_digits);
+	}
+	return (num_digits);
 }
-
 
 /**
  * binary_from_unsint - Handle the %b format specifier.
