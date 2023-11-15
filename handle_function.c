@@ -21,11 +21,10 @@ int char_handler(va_list args_list)
 int str_handler(va_list args_list)
 {
 	char *ss = va_arg(args_list, char*);
+	int len = 0;
 
 	if (ss == NULL)
 		ss = "(null)";
-
-	int len = 0;
 
 	while (ss[len])
 	{

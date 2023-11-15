@@ -16,13 +16,15 @@ int handle_f_spec(const char *format, va_list args_list)
 		{'b', binary_from_unsint},
 		{'\0', NULL}
 	};
+	int i = 0;
 
-	for (int i = 0; specifiers[i].specifier != '\0'; i++)
+	while (specifiers[i].specifier != '\0')
 	{
 		if (specifiers[i].specifier == *format)
 		{
 			return (specifiers[i].func(args_list));
 		}
+		i++;
 	}
 
 	return (unknown_format_handler(format));

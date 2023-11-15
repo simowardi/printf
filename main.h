@@ -13,7 +13,7 @@ int _printf(const char *format, ...);
 typedef struct FormatSpecifier
 {
 	char specifier;      /* Format specifier character */
-	int (*func)(va_list);;  /* Corresponding handling function */
+	int (*func)(va_list);  /* Corresponding handling function */
 } FormatSpecifier;
 
 
