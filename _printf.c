@@ -23,9 +23,8 @@ int _printf(const char *format, ...)
 			printed += print_normal_char(format);
 		}
 		else if (*format == '\0')
-		{
-			return (NULL);
-		}
+			break;
+
 		else
 		{
 			format++;
