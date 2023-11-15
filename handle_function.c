@@ -15,9 +15,30 @@ int char_handler(va_list args_list)
 		write(1, "(null)", 6);
 		return (6);
 	}
-	else
+
 	write(1, &cc, 1);
 	return (1);
+}
+
+/**
+ * str_handler - Handle the %s format specifier.
+ * @args_list: va_list of arguments / strings.
+ * Return: Number of characters printed.
+ */
+int str_handler(va_list args_list)
+{
+	char *ss = va_arg(args_list, char*);
+	int len = 0;
+
+	if (ss == NULL)
+		ss = "(null)";
+
+	while (ss[len])
+	{
+		len++;
+	}
+	write(1, ss, len);
+	return (len);
 }
 
 
