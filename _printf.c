@@ -12,8 +12,10 @@ int _printf(const char *format, ...)
 	va_list args_list;
 
 	if (format == NULL)
+	{
 		write(1, "(null)", 6);
 		return (-1);
+	}
 
 	va_start(args_list, format);
 
