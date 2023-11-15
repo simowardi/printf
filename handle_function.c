@@ -10,36 +10,16 @@ int char_handler(va_list args_list)
 {
 	char cc = va_arg(args_list, int);
 
-	/* Check for null character */
 	if (cc == '\0')
 	{
-		return (-1);
+		write(1, "(null)", 6);
+		return (6);
 	}
+	else
 	write(1, &cc, 1);
 	return (1);
 }
 
-
-/**
- * str_handler - Handle the %s format specifier.
- * @args_list: va_list of arguments / strings.
- * Return: Number of characters printed.
- */
-int str_handler(va_list args_list)
-{
-	char *ss = va_arg(args_list, char*);
-	int len = 0;
-
-	if (ss == NULL)
-		ss = "(null)";
-
-	while (ss[len])
-	{
-		len++;
-	}
-	write(1, ss, len);
-	return (len);
-}
 
 /**
  * int_handler - Handle the %d and %i format specifiers.
