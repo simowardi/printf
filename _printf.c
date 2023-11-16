@@ -13,9 +13,7 @@ int _printf(const char *format, ...)
 	va_list args_list;
 
 	if (format == NULL)
-	{
 		return (-1);
-	}
 
 	va_start(args_list, format);
 
@@ -28,11 +26,9 @@ int _printf(const char *format, ...)
 		else
 		{
 			format++;
-			if (*format == '\0')
-				break;
-
-			if (*format == '%')
+			if (*format == '\0' || *format == '%')
 				printed += print_normal_percent(format);
+
 			else
 			{
 				printed += handle_f_spec(format, args_list);
