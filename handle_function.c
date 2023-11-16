@@ -26,7 +26,10 @@ int str_handler(va_list args_list)
 	int len = 0;
 
 	if (ss == NULL)
-		ss = "(null)";
+	{
+		str_handler("(null)")
+			return (len);
+	}
 
 	while (ss[len])
 	{
