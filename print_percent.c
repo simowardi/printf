@@ -7,6 +7,6 @@
  */
 int print_normal_percent(const char *format)
 {
-	write(1, %, 1);
+	write(1, format, 1);
 	return (1);
 }
