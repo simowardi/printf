@@ -28,6 +28,7 @@ int _printf(const char *format, ...)
 			format++;
 			if (*format == '\0')
 				return (1);
+				printed++;
 
 			if (*format == '%')
 				printed += print_normal_percent(format);
@@ -43,6 +44,5 @@ int _printf(const char *format, ...)
 
 	return (printed);
 }
-
 
 
