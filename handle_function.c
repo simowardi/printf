@@ -14,7 +14,6 @@ int char_handler(va_list args_list)
 }
 
 
-
 /**
  * str_handler - Handle the %s format specifier.
  * @args_list: va_list of arguments / strings.
@@ -28,7 +27,7 @@ int str_handler(va_list args_list)
 	if (ss == NULL)
 	{
 		str_handler("(null)")
-			return (len);
+			return;
 	}
 
 	while (ss[len])
@@ -38,7 +37,6 @@ int str_handler(va_list args_list)
 	}
 	return (len);
 }
-
 
 
 /**
@@ -138,18 +136,22 @@ int binary_from_unsint(va_list args_list)
 	return (num_bits);
 }
 
+
+
+
 /**
  * unknown_format_handler - Handle an unknown format specifier.
  * @format: Format specifier string.
  * Return: Number of characters printed.
  */
+
 int unknown_format_handler(const char *format)
 {
 	write(1, "%", 1); /* Print '%' character */
 
 	if (*format != '\0')  /* Check if the unknown is not null*/
 	{
-		write(1, format, 1); /* Print the unknown */
+		write(1, format, 1); /* Print the unknown specifier*/
 		return (2);  /* Return 2 */
 	}
 	return (1);
