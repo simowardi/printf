@@ -24,8 +24,7 @@ int str_handler(va_list args_list)
 	int len = 0;
 
 	if (ss == NULL)
-	handle_string("(null)");
-		return (0);
+		ss = "(null)";
 
 	while (ss[len])
 	{
@@ -34,6 +33,7 @@ int str_handler(va_list args_list)
 	write(1, ss, len);
 	return (len);
 }
+
 
 /**
  * int_handler - Handle the %d and %i format specifiers.
