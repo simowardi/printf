@@ -28,7 +28,7 @@ int _printf(const char *format, ...)
 			format++;
 			if (*format == '\0')
 				return (1);
-				printed++;
+
 
 			if (*format == '%')
 				printed += print_normal_percent(format);
@@ -38,6 +38,7 @@ int _printf(const char *format, ...)
 				printed += handle_f_spec(format, args_list);
 			}
 		}
+		printed++;
 		format++;
 	}
 	va_end(args_list);
