@@ -8,11 +8,16 @@
 int char_handler(va_list args_list)
 {
 	char cc = va_arg(args_list, int);
-
-	write(1, &cc, 1);
+	if (cc == '\0')
+	{
+		cc  = '\0';
+		write(1, &cc, 1);
+		return (0);
+	}
+	else
+		write(1, &cc, 1);
 	return (1);
 }
-
 
 
 /**
@@ -43,52 +48,82 @@ int str_handler(va_list args_list)
  * Return: Number of characters printed.
  */
 
+#include <stdarg.h>
+#include <stdio.h>
+#include <stdlib.h>
+#include <unistd.h>
+
 int int_handler(va_list args_list)
 {
 	int input_integer = va_arg(args_list, int);
 	int num_digits = 0;
 	int temp = input_integer;
 	int index;
-
-	char buffer[12]; /* Assuming a 32-bit integer */
+	char *buffer;
+	int i = 0;
+	int j = num_digits - 1;
 
 	if (input_integer == 0)
 	{
 		write(1, "0", 1);
-		return (1);
+		return 1;
 	}
-
 	if (input_integer < 0)
 	{
 		write(1, "-", 1);
 		temp = -temp;
 		num_digits++;
 	}
-
 	index = 0;
+
 	while (temp != 0)
 	{
 		temp /= 10;
 		num_digits++;
 		index++;
 	}
-
 	index--;
 
 	if (input_integer < 0)
 		input_integer = -input_integer;
 
+	buffer = malloc(num_digits + 1); /* +1 for null terminator */
+
+	if (buffer == NULL)
+	{
+		/* Handle memory allocation failure */
+		return 0;
+	}
+	index = 0;
+
 	while (input_integer != 0)
 	{
 		buffer[index] = input_integer % 10 + '0';
 		input_integer /= 10;
-		index--;
+		index++;
 	}
 
+	buffer[index] = '\0'; /* Null-terminate the string */
+
+	/* Reverse the string in-place */
+	while (i < j)
+	{
+		/* Swap characters at i and j */
+		char temp = buffer[i];
+		buffer[i] = buffer[j];
+		buffer[j] = temp;
+		i++;
+		j--;
+	}
+
+	/* Write the buffer to the standard output */
 	write(1, buffer, num_digits);
 
-	return (num_digits);
+	free(buffer);
+
+	return num_digits;
 }
+
 
 
 
@@ -133,7 +168,6 @@ int binary_from_unsint(va_list args_list)
 
 	return (num_bits);
 }
-
 
 
 
