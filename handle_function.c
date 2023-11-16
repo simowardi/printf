@@ -30,8 +30,8 @@ int str_handler(va_list args_list)
 	while (ss[len])
 	{
 		len++;
-	write(1, ss, len);
 	}
+	write(1, ss, len);
 	return (len);
 }
 
