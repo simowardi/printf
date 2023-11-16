@@ -28,6 +28,9 @@ int _printf(const char *format, ...)
 			format++;
 			if (*format == '%')
 				printed += print_normal_percent(format);
+			else if (*format == '\0')
+				break;
+
 			else
 			{
 				printed += handle_f_spec(format, args_list);
