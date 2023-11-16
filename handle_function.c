@@ -44,49 +44,49 @@ int str_handler(va_list args_list)
 
 int int_handler(va_list args_list)
 {
-    int input_integer = va_arg(args_list, int);
-    int num_digits = 0;
-    int temp = input_integer;
-    int index;
+	int input_integer = va_arg(args_list, int);
+	int num_digits = 0;
+	int temp = input_integer;
+	int index;
 
-    char buffer[12]; /* Assuming a 32-bit integer */
+	char buffer[12]; /* Assuming a 32-bit integer */
 
-    if (input_integer == 0)
-    {
-        write(1, "0", 1);
-        return (1);
-    }
+	if (input_integer == 0)
+	{
+		write(1, "0", 1);
+		return (1);
+	}
 
-    if (input_integer < 0)
-    {
-        write(1, "-", 1);
-        temp = -temp;
-        num_digits++;
-    }
+	if (input_integer < 0)
+	{
+		write(1, "-", 1);
+		temp = -temp;
+		num_digits++;
+	}
 
-    index = 0;
-    while (temp != 0)
-    {
-        temp /= 10;
-        num_digits++;
-        index++;
-    }
+	index = 0;
+	while (temp != 0)
+	{
+		temp /= 10;
+		num_digits++;
+		index++;
+	}
 
-    index--;
+	index--;
 
-    if (input_integer < 0)
-        input_integer = -input_integer;
+	if (input_integer < 0)
+		input_integer = -input_integer;
 
-    while (input_integer != 0)
-    {
-        buffer[index] = input_integer % 10 + '0';
-        input_integer /= 10;
-        index--;
-    }
+	while (input_integer != 0)
+	{
+		buffer[index] = input_integer % 10 + '0';
+		input_integer /= 10;
+		index--;
+	}
 
-    write(1, buffer, num_digits);
+	write(1, buffer, num_digits);
 
-    return (num_digits);
+	return (num_digits);
 }
 
 
@@ -140,9 +140,16 @@ int binary_from_unsint(va_list args_list)
  */
 int unknown_format_handler(const char *format)
 {
+	/* Print '%' character */
 	write(1, "%", 1);
-	if (*format != '\0')
+
+	/* Check if the unknown specifier is not null*/
+	if (*format != '\0') {
+		/* Print the unknown specifier*/
 		write(1, format, 1);
+		return (2);  /* Return 2 */
+	}
+
 	return (1);
 }
 
