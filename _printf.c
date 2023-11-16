@@ -19,7 +19,11 @@ int _printf(const char *format, ...)
 
 	while (*format)
 	{
-		if (*format == '%') 
+		if (*format != '%')
+		{
+			printed += print_normal_char(format);
+		}
+		else
 		{
 			format++;
 			if (*format == '\0' || *format == '%')
@@ -30,14 +34,12 @@ int _printf(const char *format, ...)
 				printed += handle_f_spec(format, args_list);
 			}
 		}
-		else
-		{
-			printed += print_normal_char(format);
-		}
 		format++;
 	}
 	va_end(args_list);
 
 	return (printed);
 }
+
+
 
