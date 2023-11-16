@@ -132,9 +132,13 @@ int binary_from_unsint(va_list args_list)
  */
 int unknown_format_handler(const char *format)
 {
-	write(1, "%", 1);
-	if (*format != '\0')
-		write(1, format, 1);
+	write(1, "%", 1); /* Print '%' character */
+
+	if (*format != '\0')  /* Check if the unknown is not null*/
+	{
+		write(1, format, 1); /* Print the unknown specifier*/
+		return (2);  /* Return 2 */
+	}
 	return (1);
 }
 
