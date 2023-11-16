@@ -38,7 +38,6 @@ int _printf(const char *format, ...)
 				printed += handle_f_spec(format, args_list);
 			}
 		}
-		printed++;
 		format++;
 	}
 	va_end(args_list);
