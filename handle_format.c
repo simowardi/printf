@@ -18,15 +18,12 @@ int handle_f_spec(const char *format, va_list args_list)
 	};
 	int i = 0;
 
-	while (specifiers[i].specifier != '\0')
+	while (specifiers[i].specifier != NULL)
 	{
-		if (specifiers[i].specifier == *format)
-		{
-			return (specifiers[i].func(args_list));
-		}
+		if (strcmp(specifiers[i].specifier, s) == 0)
+			break;
 		i++;
 	}
-
-	return (unknown_format_handler(format));
+	return (specifiers[i].f);
 }
 
