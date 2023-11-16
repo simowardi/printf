@@ -11,8 +11,8 @@ int handle_f_spec(const char *format, va_list args_list)
 	FormatSpecifier specifiers[] = {
 		{'c', char_handler},
 		{'s', str_handler},
-		{'d', int_handler},
-		{'i', int_handler},
+		{'d', intd_handler},
+		{'i', nnti_handler},
 		{'b', binary_from_unsint},
 		{'\0', NULL}
 	};

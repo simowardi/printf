@@ -27,8 +27,12 @@ int print_normal_percent(const char *format);
 
 int char_handler(va_list args_list);
 int str_handler(va_list args_list);
-int int_handler(va_list args_list);
+
+int intd_handler(va_list args_list);
+int nnti_handler(va_list args_list);
+
 int binary_from_unsint(va_list args_list);
 int unknown_format_handler(const char *format);
 
 #endif /* main.h */
+
