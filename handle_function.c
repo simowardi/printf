@@ -10,7 +10,7 @@ int char_handler(va_list args_list)
 	char cc = va_arg(args_list, int);
 
 	if (cc == '\0')
-		cc  = '\n';
+		cc  = '\0';
 
 	write(1, &cc, 1);
 	return (1);
