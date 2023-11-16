@@ -8,17 +8,10 @@
 int char_handler(va_list args_list)
 {
 	char cc = va_arg(args_list, int);
-	if (cc == '\0')
-	{
-		cc  = '\0';
-		write(1, &cc, 1);
-		return (0);
-	}
-	else
-		write(1, &cc, 1);
+
+	write(1, &cc, 1);
 	return (1);
 }
-
 
 /**
  * str_handler - Handle the %s format specifier.
@@ -41,92 +34,54 @@ int str_handler(va_list args_list)
 	return (len);
 }
 
-
 /**
  * int_handler - Handle the %d and %i format specifiers.
- * @args_list: va_list of arguments type int. %d
+ * @args_list: va_list of arguments type int.
  * Return: Number of characters printed.
  */
-
-#include <stdarg.h>
-#include <stdio.h>
-#include <stdlib.h>
-#include <unistd.h>
-
 int int_handler(va_list args_list)
 {
-	int input_integer = va_arg(args_list, int);
+	int dd = va_arg(args_list, int);
 	int num_digits = 0;
-	int temp = input_integer;
-	int index;
-	char *buffer;
-	int i = 0;
-	int j = num_digits - 1;
+	int temp = dd;
 
-	if (input_integer == 0)
-	{
-		write(1, "0", 1);
-		return 1;
-	}
-	if (input_integer < 0)
+	if (dd < 0)
 	{
 		write(1, "-", 1);
 		temp = -temp;
 		num_digits++;
 	}
-	index = 0;
 
 	while (temp != 0)
 	{
 		temp /= 10;
 		num_digits++;
-		index++;
 	}
-	index--;
 
-	if (input_integer < 0)
-		input_integer = -input_integer;
-
-	buffer = malloc(num_digits + 1); /* +1 for null terminator */
-
-	if (buffer == NULL)
+	if (dd == 0)
 	{
-		/* Handle memory allocation failure */
-		return 0;
+		write(1, "0", 1);
+		num_digits = 1;
 	}
-	index = 0;
-
-	while (input_integer != 0)
+	else
 	{
-		buffer[index] = input_integer % 10 + '0';
-		input_integer /= 10;
-		index++;
+		char buffer[12];  /*Assuming a 32-bit integer*/
+		int i = num_digits - 1;
+
+		if (dd < 0)
+			dd = -dd;
+
+		while (dd != 0)
+		{
+			buffer[i] = dd % 10 + '0';
+			dd /= 10;
+			i--;
+		}
+		write(1, buffer, num_digits);
 	}
 
-	buffer[index] = '\0'; /* Null-terminate the string */
-
-	/* Reverse the string in-place */
-	while (i < j)
-	{
-		/* Swap characters at i and j */
-		char temp = buffer[i];
-		buffer[i] = buffer[j];
-		buffer[j] = temp;
-		i++;
-		j--;
-	}
-
-	/* Write the buffer to the standard output */
-	write(1, buffer, num_digits);
-
-	free(buffer);
-
-	return num_digits;
+	return (num_digits);
 }
-
-
-
-
 
 /**
  * binary_from_unsint - Handle the %b format specifier.
@@ -169,23 +124,16 @@ int binary_from_unsint(va_list args_list)
 	return (num_bits);
 }
 
-
-
 /**
  * unknown_format_handler - Handle an unknown format specifier.
  * @format: Format specifier string.
  * Return: Number of characters printed.
  */
-
 int unknown_format_handler(const char *format)
 {
-	write(1, "%", 1); /* Print '%' character */
-
-	if (*format != '\0')  /* Check if the unknown is not null*/
-	{
-		write(1, format, 1); /* Print the unknown specifier*/
-		return (2);  /* Return 2 */
-	}
+	write(1, "%", 1);
+	if (*format != '\0')
+		write(1, format, 1);
 	return (1);
 }
 
