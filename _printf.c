@@ -20,27 +20,28 @@ int _printf(const char *format, ...)
 	va_start(args_list, format);
 
 	while (*format)
-    {
-        if (*format != '%')
-        {
-            printed += print_normal_char(format);
-        }
-        else
-        {
-            format++;
-            if (*format == '\0')
-                break;
+	{
+		if (*format != '%')
+		{
+			printed += print_normal_char(format);
+		}
+		else
+		{
+			format++;
+			if (*format == '\0')
+				break;
 
-            if (*format == '%')
-                printed += print_normal_percent(format);
-            else
-            {
-                printed += handle_f_spec(format, args_list);
-            }
-        }
-        format++;
-    }
-    va_end(args_list);
-    return (printed);
+			if (*format == '%')
+				printed += print_normal_percent(format);
+			else
+			{
+				printed += handle_f_spec(format, args_list);
+			}
+		}
+		format++;
+	}
+	va_end(args_list);
+
+	return (printed);
 }
 
