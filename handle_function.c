@@ -8,8 +8,9 @@
 int char_handler(va_list args_list)
 {
 	char cc = va_arg(args_list, int);
-	if (cc = '\0')
-		cc  = NULL;
+
+	if (cc == '\0')
+		cc  = '\n';
 
 	write(1, &cc, 1);
 	return (1);
