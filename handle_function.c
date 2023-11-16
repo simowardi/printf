@@ -26,7 +26,7 @@ int str_handler(va_list args_list)
 
 	if (ss == NULL)
 	{
-		str_handler("(null)");
+		str_handler((null));
 			return (6);
 	}
 
