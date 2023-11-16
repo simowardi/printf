@@ -10,9 +10,16 @@ int _printf(const char *format, ...)
 {
 	int printed = 0;
 
+	va_list args_list;
+
+	if (format == NULL)
+		return (-1);
+
+	va_start(args_list, format);
+
 	while (*format)
 	{
-		if (*format == '%')
+		if (*format == '%') 
 		{
 			format++;
 			if (*format == '\0' || *format == '%')
@@ -27,10 +34,8 @@ int _printf(const char *format, ...)
 		{
 			printed += print_normal_char(format);
 		}
-	}
 		format++;
 	}
-
 	va_end(args_list);
 
 	return (printed);
