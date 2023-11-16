@@ -12,7 +12,7 @@ int handle_f_spec(const char *format, va_list args_list)
 		{'c', char_handler},
 		{'s', str_handler},
 		{'d', intd_handler},
-		{'i', nnti_handler},
+		{'i', intd_handler},
 		{'b', binary_from_unsint},
 		{'\0', NULL}
 	};
