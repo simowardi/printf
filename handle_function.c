@@ -25,15 +25,12 @@ int str_handler(va_list args_list)
 	int len = 0;
 
 	if (ss == NULL)
-	{
-		str_handler((null));
-			return (6);
-	}
+		ss = "(null)";
 
 	while (ss[len])
 	{
-		write(1, ss, len);
 		len++;
+	write(1, ss, len);
 	}
 	return (len);
 }
