@@ -30,7 +30,7 @@ int _printf(const char *format, ...)
 				return (1);
 
 			if (*format == '%')
-				printed += percent_handler(format);
+				printed += print_normal_percent(format);
 
 			else
 				printed += handle_f_spec(format, args_list);

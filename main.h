@@ -25,8 +25,7 @@ int handle_f_spec(const char *format, va_list args_list);
 int _putchar(char c);
 
 int print_normal_char(const char *c);
-
-int percent_handler(const char *format);
+int print_normal_percent(const char *format);
 
 int char_handler(va_list args_list);
 int str_handler(va_list args_list);
