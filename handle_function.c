@@ -11,7 +11,7 @@ int char_handler(va_list args_list)
 
 	if (cc == '\0')
 	{
-		_putchar(' ');
+		_putchar(cc);
 		return (1);
 	}
 
