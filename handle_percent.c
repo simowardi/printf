@@ -7,7 +7,7 @@
  *
  * Return: Number of characters printed.
  */
-int percent_handler(va_list args_list, const char *format)
+int percent_handler(const char *format)
 {
     int spaces = 0;
 
