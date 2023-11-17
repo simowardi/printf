@@ -5,13 +5,13 @@
  * @args_list: va_list of arguments of the char to print.
  * Return: Number of characters printed.
  */
-int char_handler(va_list args_list)
+int char_handler(va_list args_list, const char *format)
 {
 	char cc = va_arg(args_list, int);
 
 	if (cc == '\0')
 	{
-		write(1, "\0", 1);
+		_putchar(0);
 		return (1);
 	}
 
@@ -24,7 +24,7 @@ int char_handler(va_list args_list)
  * @args_list: va_list of arguments / strings.
  * Return: Number of characters printed.
  */
-int str_handler(va_list args_list)
+int str_handler(va_list args_list, const char *format)
 {
 	char *ss = va_arg(args_list, char*);
 	int len = 0;
@@ -46,7 +46,7 @@ int str_handler(va_list args_list)
  * @args_list: va_list of arguments type int.
  * Return: Number of characters printed.
  */
-int int_handler(va_list args_list)
+int int_handler(va_list args_list, const char *format)
 {
 	int dd = va_arg(args_list, int);
 	int num_digits = 0;
@@ -96,7 +96,7 @@ int int_handler(va_list args_list)
  * @args_list: the unsignet int .
  * Return: Number of characters printed.
  */
-int binary_from_unsint(va_list args_list)
+int binary_from_unsint(va_list args_list, const char *format)
 {
 	unsigned int bb = va_arg(args_list, unsigned int);
 	int num_bits = 0;

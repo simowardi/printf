@@ -14,23 +14,27 @@ int _printf(const char *format, ...);
 typedef struct FormatSpecifier
 {
 	char specifier;      /* Format specifier character */
-	int (*func)(va_list);  /* Corresponding handling function */
+	int (*func)(va_list, const char *format);  /* Corresponding handling function */
 } FormatSpecifier;
 
 
-typedef int (*print_handler)(va_list);
+typedef int (*print_handler)(va_list, const char *);
 
 int handle_f_spec(const char *format, va_list args_list);
+
+int _putchar(char c);
 
 int print_normal_char(const char *c);
 int print_normal_percent(const char *format);
 
-int char_handler(va_list args_list);
-int str_handler(va_list args_list);
+int percent_handler(va_list args_list, const char *format);
 
-int int_handler(va_list args_list);
+int char_handler(va_list args_list, const char *format);
+int str_handler(va_list args_list, const char *format);
 
-int binary_from_unsint(va_list args_list);
+int int_handler(va_list args_list, const char *format);
+
+int binary_from_unsint(va_list args_list, const char *format);
 int unknown_format_handler(const char *format);
 
 #endif /* main.h */

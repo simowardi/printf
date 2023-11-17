@@ -16,6 +16,7 @@ int handle_f_spec(const char *format, va_list args_list)
 		{'d', int_handler},
 		{'i', int_handler},
 		{'b', binary_from_unsint},
+		{'%', percent_handler},
 		{'\0', NULL}
 	};
 	int i = 0;
@@ -24,19 +25,18 @@ int handle_f_spec(const char *format, va_list args_list)
 	{
 		if (specifiers[i].specifier == *format)
 		{
-			return (specifiers[i].func(args_list));
+			return (specifiers[i].func(args_list, format));
 		}
 		i++;
 	}
 
-	if (*format != '\0')
+	if (*format != '\0' && *format != ' ')
 	{
-		write(1, &percent, 1);
-		write(1, format, 1);
+		_putchar(percent);
+		_putchar(*format);
 		return (2);
 	}
 
 	return (-1);
 }
-
 

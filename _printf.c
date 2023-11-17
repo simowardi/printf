@@ -27,15 +27,13 @@ int _printf(const char *format, ...)
 		{
 			format++;
 			if (*format == '\0' || *format == '\n')
-				return (1);
+			return (1);
 
 			if (*format == '%')
-			printed += print_normal_percent(format);
-
+				printed += print_normal_percent(format);
 			else
-			{
-				printed += handle_f_spec(format, args_list);
-			}
+			printed += handle_f_spec(format, args_list);
+
 		}
 		format++;
 	}
@@ -43,3 +41,5 @@ int _printf(const char *format, ...)
 
 	return (printed);
 }
+
+
