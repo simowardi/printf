@@ -131,3 +131,21 @@ int binary_from_unsint(va_list args_list)
 	return (num_bits);
 }
 
+/**
+ * unknown_format_handler - Handle an unknown format specifier.
+ * @format: Format specifier string.
+ * Return: Number of characters printed.
+ */
+int unknown_format_handler(const char *format)
+{
+	write(1, "%", 1); /* Print '%' character */
+
+	if (*format != '\0')  /* Check if the unknown is not null*/
+	{
+		write(1, format, 1); /* Print the unknown specifier*/
+		return (2);  /* Return 2 */
+	}
+	return (1);
+}
+
+
