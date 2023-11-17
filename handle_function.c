@@ -41,63 +41,13 @@ int str_handler(va_list args_list)
 }
 
 
-/**
- * int_handler - Handle the %d and %i format specifiers.
- * @args_list: va_list of arguments type int.
- * Return: Number of numbers printed.
- */
-int int_handler(va_list args_list)
-{
-	int dd = va_arg(args_list, int);
-	int num_digits = 0;
-
-	if (dd == INT_MIN)
-	{
-		_putchar('-');
-		dd = -(dd + 1); /* Avoid overflow when taking the absolute value */
-		num_digits++;
-	}
-	else if (dd < 0)
-	{
-		_putchar('-');
-		dd = -dd;
-		num_digits++;
-	}
-
-	if (dd == 0)
-	{
-		_putchar('0');
-		return (1);
-	}
-
-	if (dd >= 10)
-	{
-		int temp = dd;
-		while (temp != 0)
-		{
-			int digit = temp % 10;
-			_putchar(digit + '0');
-			temp /= 10;
-			num_digits++;
-		}
-	}
-	else if (dd < 10)
-	{
-		_putchar(dd + '0');
-		num_digits++;
-	}
-	return (num_digits);
-}
-
-
-
 
 
 /**
  * binary_from_unsint - Handle the %b format specifier.
  *					turn unsigned int into binary.
- * @args_list: the unsignet int .
- * Return: Number of characters printed.
+ *@args_list: the unsignet int .
+ *Return: Number of characters printed.
  */
 int binary_from_unsint(va_list args_list)
 {

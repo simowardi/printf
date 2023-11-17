@@ -7,6 +7,12 @@ int main()
 {
 	int len_1, len_2;
 
+	_printf("%d\n", 0);
+	_printf("%d\n", 123);
+	_printf("%d\n", -123);
+	_printf("%i\n", 456);
+	_printf("%i\n", -456);
+
 	/* ===========> %d <=========== */
 	printf("----------------------\n");
 	printf("--> INT(%d) CASES <---\n");
