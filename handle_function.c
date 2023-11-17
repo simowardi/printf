@@ -67,18 +67,26 @@ int int_handler(va_list args_list)
 	if (dd == 0)
 	{
 		_putchar('0');
-		return 1;
+		return (1);
 	}
 
-	while (dd != 0)
+	if (dd >= 10)
 	{
-		int digit = dd % 10;
-		_putchar(digit + '0');
-		dd /= 10;
+		int temp = dd;
+		while (temp != 0)
+		{
+			int digit = temp % 10;
+			_putchar(digit + '0');
+			temp /= 10;
+			num_digits++;
+		}
+	}
+	else if (dd < 10)
+	{
+		_putchar(dd + '0');
 		num_digits++;
 	}
-
-	return num_digits;
+	return (num_digits);
 }
 
 
