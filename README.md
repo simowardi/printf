@@ -51,4 +51,4 @@ task 2 : 2. With a face like mine, I do better in print
 Handle the following custom conversion specifiers:
 
 b: the unsigned int argument is converted to binary
-abcdefghijklmnopqrstu
+abcdefghijklmnopqrstuv
