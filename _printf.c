@@ -26,10 +26,10 @@ int _printf(const char *format, ...)
 		else
 		{
 			format++;
-			if (*format == '\0' || *format == '\n')
+			if (*format == '\0')
 			{
 				_putchar(*format);
-				return (1);
+				return (0);
 			}
 
 			if (*format == '%')
