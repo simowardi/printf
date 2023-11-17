@@ -12,7 +12,7 @@ int char_handler(va_list args_list)
 	if (cc == '\0')
 	{
 		_putchar(cc);
-		return (0);
+		return (1);
 	}
 
 	write(1, &cc, 1);
